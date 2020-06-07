@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": [
+        "google"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "rules": {
+        "semi": ["error", "never"],
+        "quotes": ["error", "single"],
+        "object-curly-spacing": [2, "always"],
+        "new-cap": 0,
+        "max-len": ["error", { "code": 140 }]
+    }
+}
