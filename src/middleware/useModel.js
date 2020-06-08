@@ -1,8 +1,8 @@
 import { models } from '../models'
-import { postgresdb } from '../database'
+import { postgreOAuth2DB } from '../database'
 
 export default (req, res, next) => {
-  postgresdb.authenticate().then(() => {
+  postgreOAuth2DB.authenticate().then(() => {
     req.models = models
     next()
   }).catch((err) => {

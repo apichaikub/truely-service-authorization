@@ -2,9 +2,11 @@ import express from 'express'
 import router from './routes'
 import config from './config'
 import bodyParser from 'body-parser'
-import { postgresdb } from './models'
+import { models } from './models'
+import { postgreOAuth2DB } from './database'
 import responseFormat from './middleware/responseFormat'
 import useModels from './middleware/useModel'
+import faker from './helper/faker/'
 
 const app = express()
 
@@ -23,9 +25,10 @@ app.use(useModels)
 // Restful APIs
 app.use(router)
 
-// connect to postgres db
-postgresdb.authenticate().then(() => {
-  console.log('postgres is connected.')
+// sync to postgreOAuth2DB db
+postgreOAuth2DB.sync({ force: true }).then(() => {
+  faker(models)
+  console.log('authorization service sync to postgreOAuth2DB success.')
 })
 
 app.listen(config.port, () => {

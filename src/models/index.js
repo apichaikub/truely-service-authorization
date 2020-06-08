@@ -1,11 +1,11 @@
-import { postgresdb } from '../database'
+import { postgreOAuth2DB } from '../database'
 import { createGetId } from '../helper/model'
 
 // import all models here
 // can be use with multiple databases
 const models = {
-  User: postgresdb.import('../models/user'),
-  OAuthRefreshToken: postgresdb.import('../models/oauthrefreshtoken'),
+  User: postgreOAuth2DB.import('../models/user'),
+  OAuthRefreshToken: postgreOAuth2DB.import('../models/oauthrefreshtoken'),
 }
 
 // set association to the models that was declared
@@ -20,12 +20,7 @@ Object.keys(models).forEach((key) => {
   model.createGetId = (values, options = {}) => createGetId(model, values, options)
 })
 
-postgresdb.sync({ force: false }).then(() => {
-  console.log('service authorization sync postgresdb success.')
-})
-
 export {
-  postgresdb,
   models,
 }
 
