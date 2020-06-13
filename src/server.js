@@ -3,7 +3,7 @@ import router from './routes'
 import config from './config'
 import bodyParser from 'body-parser'
 import { models } from './models'
-import { postgreOAuth2DB } from './database'
+import { postgreOAuth2DB, postgreUserDB } from './database'
 import responseFormat from './middleware/responseFormat'
 import useModels from './middleware/useModel'
 import faker from './helper/faker/'
@@ -25,12 +25,16 @@ app.use(useModels)
 // Restful APIs
 app.use(router)
 
-// sync to postgreOAuth2DB db
+// sync to postgre
 postgreOAuth2DB.sync({ force: true }).then(() => {
+  console.log('sync to postgreOAuth2DB')
+})
+
+postgreUserDB.sync({ force: true }).then(() => {
   faker(models)
-  console.log('authorization service sync to postgreOAuth2DB success.')
+  console.log('sync to postgreUserDB')
 })
 
 app.listen(config.port, () => {
-  console.log(`Running on port: ${config.port}`)
+  console.log(`running on port: ${config.port}`)
 })

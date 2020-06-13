@@ -1,10 +1,10 @@
-import { postgreOAuth2DB } from '../database'
+import { postgreOAuth2DB, postgreUserDB } from '../database'
 import { createGetId } from '../helper/model'
 
 // import all models here
 // can be use with multiple databases
 const models = {
-  User: postgreOAuth2DB.import('../models/user'),
+  User: postgreUserDB.import('../models/user'),
   OAuthRefreshToken: postgreOAuth2DB.import('../models/oauthrefreshtoken'),
 }
 

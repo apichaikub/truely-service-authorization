@@ -8,6 +8,7 @@ export default {
   // use `sequelize` to connect multiple databases `src/config/database.js`.
   'databases': {
     'postgres': {
+      'oauth2': process.env.DATABASE_POSTGRE_OAUTH2,
       'account': process.env.DATABASE_POSTGRE_ACCOUNT,
     },
   },
