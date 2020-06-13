@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import { ResponseError } from '../../../utils/extend'
 import { createAccessToken, createRefreshToken } from '../../../helper/auth'
 import { decrypt } from '../../../helper/crypto'
+import { TOKEN_TYPE } from '../../../helper/enum'
 import config from '../../../config'
 
 /*
@@ -68,7 +69,7 @@ export default async (input, models) => {
 
   return {
     accessToken,
-    tokenType: 'Bearer',
+    tokenType: TOKEN_TYPE.ENUM.BEARER,
     expiresIn: config.expiresIn.accessToken,
     refreshToken,
   }
