@@ -8,7 +8,7 @@ export default {
   // use `sequelize` to connect multiple databases `src/config/database.js`.
   'databases': {
     'postgres': {
-      'uri': process.env.DATABASE_URL_ACCOUNT,
+      'account': process.env.DATABASE_POSTGRE_ACCOUNT,
     },
   },
 
