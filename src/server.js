@@ -2,11 +2,9 @@ import express from 'express'
 import router from './routes'
 import config from './config'
 import bodyParser from 'body-parser'
-import { models } from './models'
-import { postgreOAuth2DB, postgreUserDB } from './database'
+import { postgreOAuth2DB } from './database'
 import responseFormat from './middleware/responseFormat'
 import useModels from './middleware/useModel'
-import faker from './helper/faker/'
 
 const app = express()
 
@@ -28,11 +26,6 @@ app.use(router)
 // sync to postgre
 postgreOAuth2DB.sync({ force: true }).then(() => {
   console.log('sync to postgreOAuth2DB')
-})
-
-postgreUserDB.sync({ force: true }).then(() => {
-  faker(models)
-  console.log('sync to postgreUserDB')
 })
 
 app.listen(config.port, () => {
