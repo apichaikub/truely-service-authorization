@@ -5,8 +5,12 @@ import bodyParser from 'body-parser'
 import { postgreOAuth2DB } from './database'
 import responseFormat from './middleware/responseFormat'
 import useModels from './middleware/useModel'
+import cors from 'cors'
 
 const app = express()
+
+// Enable All CORS Requests
+app.use(cors())
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
